@@ -4,6 +4,9 @@ android:
   components:
     - build-tools-29.0.2
     - android-29
+
+    # run emulator(s) during tests
+    - sys-img-x86-android-29
   licenses:
     - android-sdk-preview-license-.+
     - android-sdk-license-.+
@@ -15,8 +18,25 @@ before_script:
   - chmod +x checkstyle/checkstyle.sh
   - chmod +x publishAutotrackerPluginToMavenLocal.sh
 
+before_cache:
+  - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
+  - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+cache:
+  directories:
+    # Android SDK
+    - $HOME/android-cmdline-tools
+    - $HOME/android-sdk
+
+    # Gradle dependencies
+    - $HOME/.gradle/caches/
+    - $HOME/.gradle/wrapper/
+
+    # Android build cache (see http://tools.android.com/tech-docs/build-cache)
+    - $HOME/.android/build-cache
+
 script:
   - bash ./publishAutotrackerPluginToMavenLocal.sh
   - bash ./checkstyle/checkstyle.sh
   - ./gradlew test
+  - ./gradlew :demo:jacocoTestReport
   - ./gradlew assemble

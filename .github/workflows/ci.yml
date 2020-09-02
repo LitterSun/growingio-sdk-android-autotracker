@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
 
     steps:
       - uses: actions/checkout@v2
@@ -24,4 +24,5 @@ jobs:
           bash ./publishAutotrackerPluginToMavenLocal.sh
           bash ./checkstyle/checkstyle.sh
           ./gradlew test
+          ./gradlew assemble
           

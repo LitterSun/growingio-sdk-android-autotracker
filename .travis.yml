@@ -6,7 +6,7 @@ android:
     - android-29
 
     # run emulator(s) during tests
-    - sys-img-x86-android-25
+    - sys-img-armeabi-v7a-android-25
   licenses:
     - android-sdk-preview-license-.+
     - android-sdk-license-.+

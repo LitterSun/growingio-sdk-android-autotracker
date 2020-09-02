@@ -36,7 +36,7 @@ before_script:
   - chmod +x publishAutotrackerPluginToMavenLocal.sh
 
   # Emulator Management: Create, Start and Wait
-  - echo no | android create avd --force -n test -t android-29
+  - echo no | avdmanager create avd --force -n test -k 'system-images;android-29;google_apis_playstore;x86'
   - emulator -avd test -no-audio &
   - android-wait-for-emulator
   - adb shell input keyevent 3 &

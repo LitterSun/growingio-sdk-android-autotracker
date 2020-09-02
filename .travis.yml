@@ -6,7 +6,7 @@ android:
     - android-29
 
     # run emulator(s) during tests
-    - sys-img-armeabi-v7a-android-24
+    - sys-img-x86_64-android-25
   licenses:
     - android-sdk-preview-license-.+
     - android-sdk-license-.+
@@ -37,9 +37,7 @@ before_script:
 
   # Emulator Management: Create, Start and Wait
   - android list targets
-  - sdkmanager "system-images;android-25;google_apis;armeabi-v7a"
-  - android list targets
-  - echo no | android create avd --force -n test -t android-24 --abi armeabi-v7a
+  - echo no | android create avd --force -n test -t android-25 --abi x86_64
   - emulator -avd test -no-audio &
   - android-wait-for-emulator
   - adb shell input keyevent 3 &

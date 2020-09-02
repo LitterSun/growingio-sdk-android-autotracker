@@ -20,9 +20,8 @@ jobs:
           chmod +x publishAutotrackerPluginToMavenLocal.sh
 
       - name: Run Gradle command
-        uses: Raul6469/android-gradle-action@2.0.0
         run: |
           bash ./publishAutotrackerPluginToMavenLocal.sh
           bash ./checkstyle/checkstyle.sh
           ./gradlew test
-          ./gradlew assemble
+          

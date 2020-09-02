@@ -6,7 +6,7 @@ android:
     - android-29
 
     # run emulator(s) during tests
-    - sys-img-x86_64-android-25
+    - sys-img-x86-android-21
   licenses:
     - android-sdk-preview-license-.+
     - android-sdk-license-.+
@@ -37,7 +37,7 @@ before_script:
 
   # Emulator Management: Create, Start and Wait
   - android list targets
-  - echo no | android create avd --force -n test -t android-25 --abi x86_64
+  - echo no | android create avd --force -n test -t android-21 --abi x86
   - emulator -avd test -no-audio &
   - android-wait-for-emulator
   - adb shell input keyevent 3 &
